@@ -1,15 +1,15 @@
 import algoliasearch from 'algoliasearch';
 
-const index = algoliasearch('app_id', 'apiKey').initIndex('lakipykäläd');
+export const index = algoliasearch('7TTO1VGWCS', 'dd2a32c4c900fe02301cc8f563986e0c').initIndex('sections');
 
-export const Search = (params) => {
-  return index.search(params, (err, content) => {
-    if (err) {
-      console.warn(err);
-    } else {
-      console.log(content);
-      return content;
-    }
-  });
-};
+// export const search = (params) => {
+//   return index.search(params, (err, content) => {
+//     if (err) {
+//       console.warn(err);
+//     } else {
+//       console.log(content);
+//       return content.hits;
+//     }
+//   });
+// };
 

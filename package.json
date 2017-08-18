@@ -1,7 +1,7 @@
 {
-  "name": "meiko-hacks",
+  "name": "lait.fi",
   "version": "1.0.8",
-  "description": "meiko-hacks",
+  "description": "lait.fi",
   "main": "src/js/index.js",
   "engines": {
     "node": "6.0.0"
