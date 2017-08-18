@@ -1,0 +1,47 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+
+@mixin meiko-btn-style($color: $gray-light, $text-color: $gray-dark, $font-size: 26px) {
+  color: $text-color;
+  font-family: $headings-font-family;
+  background: $color;
+  font-size: $font-size;
+  letter-spacing: 1px;
+  border: 0px;
+  padding: 20px 40px;
+  box-shadow: none;
+  text-decoration: none;
+  border-radius: 0px;
+}
+
+@mixin meiko-btn($color: $gray-light, $text-color: $gray-dark, $font-size: 26px) {
+  @include meiko-btn-style($color, $text-color, $font-size);
+
+  &:hover {
+    @include meiko-btn-style($gray-dark, $gray-dark, $font-size);
+  }
+
+  &.btn-link {
+    @include btn-link($color);
+  }
+
+  transition: all 0.2s ease;
+
+  &:after {
+    transition: all 0.2s ease;
+  }
+}
+
+@mixin btn-link($color: $gray-light) {
+  padding: 10px 0;
+  text-decoration: underline;
+
+  &:after {
+    display: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  color: $color;
+}

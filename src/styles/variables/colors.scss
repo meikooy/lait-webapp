@@ -1,0 +1,51 @@
+$meiko-durian: #DEB62E;
+$meiko-customer: #1FB8ED;
+$meiko-skin: #F0AD92;
+$meiko-juice: #C95B17;
+$meiko-femme: #E88080;
+$meiko-moneh: #4DC777;
+$meiko-code: #8070C5;
+$meiko-tyre: #383838;
+$meiko-mineral: #174115;
+$meiko-ceramic: #F5F5F5;
+$meiko-cloud: #E2EAF0;
+$meiko-skin-bg: #F4D3C2;
+$meiko-blue-bg: #DCF6FF;
+
+$brand-primary: $meiko-tyre;
+$brand-success: $meiko-tyre;
+$brand-info: $meiko-tyre;
+$brand-warning: $meiko-tyre;
+$brand-danger: $meiko-tyre;
+
+$gray-darker: $meiko-tyre;
+$gray-dark: $meiko-tyre;
+$gray: $meiko-tyre;
+$gray-light: lighten($meiko-tyre, 40%);
+$gray-lighter: darken($meiko-ceramic, 5%);
+
+$meiko-colors: (durian, $meiko-durian),
+               (skin, $meiko-skin),
+               (juice, $meiko-juice),
+               (femme, $meiko-femme),
+               (customer, $meiko-customer),
+               (moneh, $meiko-moneh),
+               (code, $meiko-code),
+               (tyre, $meiko-tyre),
+               (mineral, $meiko-mineral),
+               (ceramic, $meiko-ceramic),
+               (cloud, $meiko-cloud);
+
+$brand-colors: (primary, $brand-primary),
+               (success, $brand-success),
+               (danger, $brand-danger),
+               (info, $brand-info),
+               (warning, $brand-warning),
+               (default, $gray-light);
+
+$button-colors: (primary, $gray-dark, #fff),
+                (success, $brand-success, #fff),
+                (danger, $brand-danger, #fff),
+                (info, $brand-info, #fff),
+                (warning, $brand-warning, #fff),
+                (default, $gray-dark, #fff);

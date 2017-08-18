@@ -1,0 +1,10 @@
+doctype html
+html(lang='fi')
+  head
+    include ../partials/head
+  body
+    .content
+      block header
+      block content
+    block footer
+    script(src!='/js/scripts-index.js?' + Date.now())

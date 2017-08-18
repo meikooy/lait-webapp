@@ -1,0 +1,22 @@
+// variables and mixins
+@import "variables/variables";
+@import "mixins";
+@import "vendor/bootstrap/index";
+@import "vendor/font-awesome/index";
+
+
+// global styles
+@import "global";
+@import "typography";
+
+
+// components
+@import "components/buttons";
+@import "components/header";
+@import "components/sections";
+@import "components/footer";
+@import "components/page";
+
+
+// pages
+@import "pages/index";

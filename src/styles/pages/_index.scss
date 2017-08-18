@@ -1,0 +1,59 @@
+section.intro {
+  .intro-content {
+    margin-top: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    height: 800px;
+
+    p.lead {
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      padding: 70px 60px;
+      color: #fff;
+      font-size: 38px;
+      letter-spacing: 2px;
+      line-height: 48px;
+      background: rgba(54, 54, 54, 0.65);
+      width: 48%;
+      margin: 0;
+
+      @media (max-width: $screen-sm-max) {
+        width: 54%;
+        padding: 60px 40px;
+        font-size: 30px;
+        line-height: 42px;
+      }
+    }
+
+    @media (max-width: $screen-sm-max) {
+      background-position: top center;
+      height: 600px;
+
+      p.lead {
+        width: 54%;
+        padding: 60px 40px;
+        font-size: 30px;
+        line-height: 42px;
+      }
+    }
+
+    @media (max-width: $screen-xs-max) {
+      background-size: auto 300px;
+      background-position: top center;
+      height: auto;
+      padding-top: 300px;
+
+      p.lead {
+        width: auto;
+        background: $gray-dark;
+        position: static;
+        padding: 60px 40px;
+        font-size: 24px;
+        line-height: 36px;
+      }
+    }
+  }
+}

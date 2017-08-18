@@ -1,0 +1,47 @@
+.btn {
+  @include meiko-btn($gray-dark, #fff);
+  @each $name, $color, $text-color in $button-colors {
+    &.btn-#{$name} {@include meiko-btn($color, $text-color);}
+  }
+
+  span + i {
+    margin-left: 8px;
+  }
+
+  i + span {
+    margin-left: 8px;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    display: block;
+    overflow: auto;
+    white-space: normal;
+    line-height: 1.2;
+
+    &.btn-link {
+      padding: 15px 20px !important;
+    }
+  }
+}
+
+.btn-group {
+  border-radius: 3px;
+  box-shadow: inset rgba(255, 255, 255, 0.25) 0px 2px 1px,
+              rgba(0, 0, 0, 0.1) 0px 2px 4px;
+  .btn {
+    box-shadow: none;
+  }
+}
+
+.btn-group-vertical {
+  border-radius: 3px;
+  box-shadow: inset rgba(255, 255, 255, 0.25) 0px 2px 1px,
+              rgba(0, 0, 0, 0.1) 0px 2px 4px;
+  .btn {
+    box-shadow: none;
+
+    & + .btn {
+      margin-top: 0px;
+    }
+  }
+}
