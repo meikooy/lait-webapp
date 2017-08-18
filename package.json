@@ -1,7 +1,7 @@
 {
-  "name": "meiko-www",
+  "name": "meiko-hacks",
   "version": "1.0.8",
-  "description": "meiko-www",
+  "description": "meiko-hacks",
   "main": "src/js/index.js",
   "engines": {
     "node": "6.0.0"
