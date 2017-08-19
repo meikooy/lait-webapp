@@ -7,11 +7,12 @@ export default class Search extends Component {
 
     return (
       <div className="search-wrapper">
-          <form>
+          <form onSubmit={e => e.preventDefault()}>
             <div className="form-group">
               <FormGroup>
                 <FormControl
                   type='text'
+                  id='search-input-field'
                   placeholder='Hae'
                   onChange={search}>
                 </FormControl>

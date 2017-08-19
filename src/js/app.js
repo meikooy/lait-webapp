@@ -15,11 +15,22 @@ export default class App extends Component {
       loading: false
     };
 
-    this.search = this.search.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
     this.openUrl = this.openUrl.bind(this);
+    this.searchFromAlgolia = this.searchFromAlgolia.bind(this);
+    this.getUrlParams = this.getUrlParams.bind(this);
   }
 
-  search(e) {
+  componentDidMount() {
+    const searchParam = this.getUrlParams('q');
+    if (searchParam && searchParam.length) {
+      this.searchFromAlgolia(searchParam);
+      const inputField = document.getElementById('search-input-field');
+      if (inputField) inputField.value = searchParam;
+    }
+  }
+
+  onInputChange(e) {
     e.preventDefault();
     let searchWord = e.target.value;
 
@@ -34,19 +45,43 @@ export default class App extends Component {
       }
 
       this.setState({loading: true});
-
-      index.search(e.target.value, (err, content) => {
-        if (err) {
-          console.warn(err);
-          this.setState({loading: false});
-        } else {
-          this.setState({searchResults: content.hits, loading: false});
-        }
-      });
+      this.searchFromAlgolia(e.target.value);
     } else {
       this.setState({searchResults: []});
     }
   }
+
+  searchFromAlgolia(searchWord) {
+    // Track analytics
+    if (window.ga) {
+      const track = function() {
+          ga('send', 'pageview', '/?q=' + searchWord);
+      };
+      debounce(track, 500)();
+    }
+
+    return index.search(searchWord, (err, content) => {
+      if (err) {
+        console.warn(err);
+        this.setState({loading: false});
+      } else {
+        this.setState({searchResults: content.hits, loading: false});
+      }
+      });
+  }
+
+  getUrlParams(prop) {
+    var params = {};
+    var search = decodeURIComponent( window.location.href.slice( window.location.href.indexOf( '?' ) + 1 ) );
+    var definitions = search.split('&');
+
+    definitions.forEach( function( val, key ) {
+        var parts = val.split( '=', 2 );
+        params[ parts[ 0 ] ] = parts[ 1 ];
+    } );
+
+    return (prop && prop in params ) ? params[ prop ] : params;
+}
 
   openUrl(url) {
     window.open(url);
@@ -55,7 +90,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-          <SearchInput search={this.search}/>
+          <SearchInput search={this.onInputChange}/>
           <SearchResults openUrl={this.openUrl} results={this.state.searchResults} />
       </div>
     );
