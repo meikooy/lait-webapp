@@ -6,6 +6,9 @@
   "engines": {
     "node": "6.0.0"
   },
+  "scripts": {
+    "heroku-postbuild": "make production-release"
+  },
   "author": "Teemu Alapoikela",
   "license": "ISC",
   "dependencies": {
@@ -31,9 +34,7 @@
     "react-dom": "^15.6.1",
     "respond.js": "^1.4.2",
     "scrolltop": "0.0.1",
-    "transitionend-property": "0.0.2"
-  },
-  "devDependencies": {
+    "transitionend-property": "0.0.2",
     "autoprefixer": "^6.1.0",
     "babel": "^6.0.15",
     "babel-core": "^6.1.2",
