@@ -49,7 +49,7 @@ src/assets/fonts/%: dist/fonts/
 	cp $@ $<$*
 
 images:
-	$(IMAGEMIN) src/assets/images/* dist/images
+	cp src/assets/images/* dist/images
 
 assets: pre-assets images $(FONT_FILES)
 
