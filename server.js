@@ -14,19 +14,6 @@ app.get('/*', function(req, res, next) {
 	}
 });
 
-// Redirect 2016 paths
-app.get('/*', function(req, res, next) {
-	if (req.path === '/referenssit') {
-		res.redirect(301, '/');
-	}
-	else if (req.path === '/tuotteet') {
-		res.redirect(301, '/');
-	}
-	else {
-		next();
-	}
-});
-
 // Append .html to paths with no extension
 app.use(function(req, res, next) {
 	if (req.path.indexOf('.') === -1) {
