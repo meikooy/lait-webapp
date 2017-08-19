@@ -1,49 +1,55 @@
 import React, {Component} from 'react';
-// import {search as searchFromAlgolia} from './services/algolia';
 import {index} from './services/algolia';
+import {Row} from 'react-bootstrap';
+
+import SearchInput from './components/search/search-input';
+import SearchResults from './components/search/search-results';
 
 export default class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      searchResult: []
+      searchResults: [],
+      loading: false
     };
 
     this.search = this.search.bind(this);
+    this.openUrl = this.openUrl.bind(this);
   }
 
   search(e) {
-    console.log(e.target.value);
-    const self = this;
-    index.search(e.target.value, (err, content) => {
-      if (err) {
-        console.warn(err);
-      } else {
-        this.setState({searchResult: content.hits});
-        console.log(content);
-      }
-    });
+    e.preventDefault();
+    let searchWord = e.target.value;
+
+    if (searchWord && searchWord.length) {
+
+      this.setState({loading: true});
+
+      index.search(e.target.value, (err, content) => {
+        if (err) {
+          console.warn(err);
+          this.setState({loading: false});
+        } else {
+          this.setState({searchResults: content.hits, loading: false});
+          console.log(content);
+        }
+      });
+    } else {
+      this.setState({searchResults: []});
+    }
+  }
+
+  openUrl(url) {
+    window.open(url);
   }
 
   render() {
     return (
       <div>
-        <h1>hacks</h1>
-        <Search search={this.search} />
+          <SearchInput search={this.search}/>
+          <SearchResults openUrl={this.openUrl} isLoading={this.state.loading} results={this.state.searchResults} />
       </div>
     );
-  }
-};
-
-class Search extends Component {
-  render() {
-    return (
-        <form>
-          <div className="form-group">
-            <input onChange={this.props.search} type="text" className="form-control" id="exampleInputEmail1" placeholder="Hae"></input>
-          </div>
-        </form>
-      );
   }
 };

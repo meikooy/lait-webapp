@@ -1,8 +1,11 @@
 import path from 'path';
 import webpack from 'webpack';
+import dotenv from 'dotenv';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import pkg from './package.json';
+
+const envVars = dotenv.load();
 
 const es6dirs = [
 	'src'
@@ -21,13 +24,10 @@ export default {
 		publicPath: ''
 	},
 	plugins: [
-		new webpack.DefinePlugin({
-			'process.env': {
-				TARGET: JSON.stringify(process.env.TARGET || 'local'),
-	      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-				BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),
-	      BROWSER: JSON.stringify(true)
-			}
+    new webpack.DefinePlugin({
+			'process.env': Object.keys(envVars).reduce((env, k) => {
+        return {...env, [k]: JSON.stringify(envVars[k])};
+      }, {}).parsed
 	  }),
 		new ExtractTextPlugin(
 			`/css/styles.css`,

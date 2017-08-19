@@ -2,7 +2,6 @@ include nav
 
 mixin header(currentPage, hidemain, title)
   header(class!=currentPage)
-    a.logo(href='/'): img(src='/images/meiko_logo.svg')
     if title
       h1.title!=title
     +nav(currentPage, hidemain)

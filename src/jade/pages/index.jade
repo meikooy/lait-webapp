@@ -1,16 +1,11 @@
-include ../mixins/header
-include ../mixins/footer
 extends ../layouts/main
 
 block header
-  +header('main', true)
+  h1 Lait.fi
 
 block content
-    .page.main-page
-      section.intro
-        h1.hyphens(data-hyphens-max='768')
-          | Hacks,
-          #root
+  #root
 
 block footer
-  +footer('main', true)
+  footer
+    small Aute dolor laborum fugiat culpa laboris ullamco ex velit sint.
