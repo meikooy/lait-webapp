@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class SearchResults extends Component {
   render() {
-    const {results, isLoading, openUrl} = this.props;
+    const {results, openUrl} = this.props;
 
     return (
       <div className="results">
