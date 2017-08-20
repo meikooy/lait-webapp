@@ -4,7 +4,7 @@ import {index} from './services/algolia';
 import SearchInput from './components/search/search-input';
 import SearchResults from './components/search/search-results';
 
-import debounce from 'debounce';
+var track;
 
 export default class App extends Component {
   constructor() {
@@ -35,15 +35,6 @@ export default class App extends Component {
     let searchWord = e.target.value;
 
     if (searchWord && searchWord.length) {
-
-      // Track analytics
-      if (window.ga) {
-        const track = function() {
-            ga('send', 'pageview', '/?q=' + searchWord);
-        };
-        debounce(track, 500)();
-      }
-
       this.setState({loading: true});
       this.searchFromAlgolia(e.target.value);
     } else {
@@ -54,10 +45,10 @@ export default class App extends Component {
   searchFromAlgolia(searchWord) {
     // Track analytics
     if (window.ga) {
-      const track = function() {
-          ga('send', 'pageview', '/?q=' + searchWord);
-      };
-      debounce(track, 500)();
+      if (track) clearTimeout(track);
+      track = setTimeout(function() {
+        ga('send', 'pageview', '/?q=' + searchWord);
+      }, 2000);
     }
 
     return index.search(searchWord, (err, content) => {
