@@ -93,6 +93,7 @@ section.intro {
   .result {
     margin: 20px 0;
     position: relative;
+
     &:hover {
       cursor: pointer;
       h3 {
@@ -106,6 +107,11 @@ section.intro {
     } // highlight
     em {
       color: $meiko-durian;
+    }
+
+    a {
+      border-bottom: 0;
+      pointer-events: none;
     }
 
     aside {

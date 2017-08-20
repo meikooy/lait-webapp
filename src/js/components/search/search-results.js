@@ -10,7 +10,7 @@ export default class SearchResults extends Component {
             return (
               <div onClick={_ => openUrl(r.url)} key={index} className="result clearfix">
                 <h3 dangerouslySetInnerHTML={{__html: r._highlightResult.law.title.value}}></h3>
-                <p dangerouslySetInnerHTML={{__html: r._highlightResult.content.value}}></p>
+                <div dangerouslySetInnerHTML={{__html: r._highlightResult.content.value}}></div>
 
                 <aside>
                   <span className="text-primary">{r.law.year}</span>
